@@ -22,10 +22,10 @@ def init():
 	global time_shift
 	if(op == 2):
 		global freq_shift
-		freq_shift = int(input("请输入目标频率倍率:"))
+		freq_shift = float(input("请输入目标频率倍率:"))
 		time_shift = freq_shift
 	else:
-		time_shift = int(input("请输入目标时长倍率(注意不是倍速, 而是时长倍率):"))
+		time_shift = float(input("请输入目标时长倍率(注意不是倍速, 而是时长倍率):"))
 
 	global Ha, Hs
 	Ha = Hs / time_shift
@@ -70,7 +70,7 @@ for i in range(0, cnt):
 #输出
 print("正在输出")
 if(op == 2): #变调不变速
-	sf.write(ofile_name, res, sr * time_shift) #直接改变采样率(单位时间内的采样点数量)，即可改变速率
+	sf.write(ofile_name, res, int(sr * time_shift)) #直接改变采样率(单位时间内的采样点数量)，即可改变速率
 else: #变速不变调
 	sf.write(ofile_name, res, sr)
 
